@@ -25,6 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -55,13 +56,16 @@ fun LoginForm(modifier: Modifier = Modifier) {
     var password by rememberSaveable { mutableStateOf("") }
 
     Column(modifier = modifier.padding(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Text("Login", fontSize = 32.sp, modifier = Modifier.padding(8.dp))
+        Text(stringResource(R.string.login), fontSize = 32.sp, modifier = Modifier.padding(8.dp))
         LoginField(
             value = username,
             onValueChange = { username = it },
-            label = "Username",
+            label = stringResource(R.string.username),
             trailingIcon = {
-                Icon(imageVector = Icons.Filled.Email, contentDescription = "Username")
+                Icon(
+                    imageVector = Icons.Filled.Email,
+                    contentDescription = stringResource(R.string.username)
+                )
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Email,
@@ -71,9 +75,12 @@ fun LoginForm(modifier: Modifier = Modifier) {
         LoginField(
             value = password,
             onValueChange = { password = it },
-            label = "Password",
+            label = stringResource(R.string.password),
             trailingIcon = {
-                Icon(imageVector = Icons.Filled.Lock, contentDescription = "Password")
+                Icon(
+                    imageVector = Icons.Filled.Lock,
+                    contentDescription = stringResource(R.string.password)
+                )
             },
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(
@@ -82,7 +89,7 @@ fun LoginForm(modifier: Modifier = Modifier) {
             )
         )
         Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
-            Text("Submit")
+            Text(stringResource(R.string.submit))
         }
     }
 }
